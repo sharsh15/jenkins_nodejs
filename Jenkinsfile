@@ -24,6 +24,15 @@ pipeline {
                 }
             }
         }
+        
+        stage('Building dockerfile') {
+            steps{
+                script{
+                    def repoDir = "C:/ProgramData/Jenkins/.jenkins/workspace/nodejs/jenkins_nodejs"
+                    bat "cd ${repoDir} && docker build -t my-nodejs-app ."
+                }
+            }
+        }
 
         stage('Running the Node.js project') {
             steps {

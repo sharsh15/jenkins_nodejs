@@ -1,4 +1,8 @@
-FROM openjdk:11
-COPY ./myapp.jar /usr/app/
+FROM node:lts
+COPY package*.json /usr/app
 WORKDIR /usr/app
-ENTRYPOINT ["java","-jar","myapp.jar"]
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["npm", "start"]
+
